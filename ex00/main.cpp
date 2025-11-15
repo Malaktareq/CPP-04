@@ -4,7 +4,7 @@
 int main()
 {
     const Animal* meta = new Animal();
-    const WrongCat j =WrongCat();
+    const WrongAnimal j =WrongCat();
     const Animal* i = new Cat();
     const WrongAnimal* wrongMeta = new WrongCat();
 
