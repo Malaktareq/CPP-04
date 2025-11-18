@@ -18,6 +18,7 @@ class Character : public ICharacter
         void unequip(int idx);
         void use(int i,ICharacter& target);
         std::string const & getName() const;
+        AMateria* getMateria(int index);
 };
 
 #endif

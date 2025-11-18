@@ -8,7 +8,8 @@ MateriaSource::MateriaSource()
 
 MateriaSource::~MateriaSource()
 {
-
+    for (int i =0 ; i< 4;i++)
+        delete materias[i];
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other)
@@ -22,9 +23,6 @@ MateriaSource::MateriaSource(const MateriaSource& other)
     }
 }
 
-MateriaSource::~MateriaSource()
-{
-}
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 {
@@ -45,6 +43,7 @@ void MateriaSource::learnMateria(AMateria* m)
     if (m == NULL)
     {
         std::cout << "Cannot learn a null materia." << std::endl;
+        delete m;
         return;
     }
     for (int i = 0 ; i < 4 ; i++)
@@ -52,6 +51,7 @@ void MateriaSource::learnMateria(AMateria* m)
         if (materias[i] == NULL)
         {
             materias[i] = m->clone();
+            delete m;
             return;
         }
     }
@@ -60,6 +60,7 @@ void MateriaSource::learnMateria(AMateria* m)
 
 AMateria* MateriaSource::createMateria(std::string const &type)
 {
+    
     for (int i = 0 ; i < 4 ; i++)
     {
         if (materias[i] != NULL && materias[i]->getType() == type)

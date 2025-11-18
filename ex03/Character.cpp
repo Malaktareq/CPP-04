@@ -1,5 +1,5 @@
 #include "Character.hpp"
-
+#include "AMateria.hpp"
 Character::Character()
 {
     name = "default";
@@ -63,6 +63,7 @@ void Character::equip(AMateria* m)
         }
     }
     std::cout << "No empty slot available to equip materia." << std::endl;
+    delete m;
 }
 
 void Character::use(int i, ICharacter& target)
@@ -89,7 +90,12 @@ void Character::unequip(int idx)
     }
     inventory[idx] = NULL;
 }
-
+AMateria* Character::getMateria(int index)
+{
+    return inventory[index] ;
+}
 Character::~Character()
 {
+    for (int i =0 ; i < 4;i++)
+        delete inventory[i];
 }
